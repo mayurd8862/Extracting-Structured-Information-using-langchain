@@ -1,33 +1,54 @@
 import os
 import chromadb
-from sentence_transformers import SentenceTransformer
+from langchain_community.document_loaders import TextLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from chromadb.config import Settings
+from typing import List, Dict, Any
+from sentence_transformers import SentenceTransformer
 
-def get_stories(folder_path):
+def load_stories(directory):
     """
-    Simple function to read stories from text files.
+    function to read stories from text files.
     """
     stories = []
-    for filename in os.listdir(folder_path):
+    for filename in os.listdir(directory):
         if filename.endswith('.txt'):
-            with open(os.path.join(folder_path, filename), 'r', encoding='utf-8') as file:
-                content = file.read()
-                stories.append({
-                    'title': filename.replace('.txt', ''),
-                    'text': content
-                })
+            filepath = os.path.join(directory, filename)
+            loader = TextLoader(filepath, encoding='utf-8')
+            documents = loader.load()
+            
+            # Extract story title from filename (remove .txt)
+            story_title = os.path.splitext(filename)[0]
+            
+            # Combine document contents
+            full_text = " ".join([doc.page_content for doc in documents])
+            
+            stories.append({
+                'title': story_title,
+                'content': full_text
+            })
+    
     return stories
 
-def create_embeddings(stories, db_path='./chroma_db'):
-    """
-    Create embeddings for stories and store in ChromaDB.
-    """
+
+def compute_embeddings(stories: List[Dict[str, Any]], 
+                        persist_directory: str = './chroma_db'):
+    
+    # Check if the directory exists; if not, create it
+    if not os.path.exists(persist_directory):
+        os.makedirs(persist_directory)
+        print(f"Created directory: {persist_directory}")
+    else:
+        print(f"vector database Directory '{persist_directory}' already exists.")
+        return
+
     # Initialize embedding model
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    # model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     
     # Initialize ChromaDB client
     chroma_client = chromadb.PersistentClient(
-        path=db_path, 
+        path=persist_directory, 
         settings=Settings(anonymized_telemetry=False)
     )
     
@@ -36,14 +57,18 @@ def create_embeddings(stories, db_path='./chroma_db'):
     
     # Process and embed stories
     for story in stories:
-        # Split story into chunks
-        chunks = [
-            story['text'][i:i+1000] 
-            for i in range(0, len(story['text']), 1000)
-        ]
+        # Split story into chunks for better embedding
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000, 
+            chunk_overlap=200
+        )
+        
+        # Split story content into chunks
+        text_chunks = text_splitter.split_text(story['content'])
         
         # Embed and store chunks
-        for chunk_idx, chunk in enumerate(chunks):
+        for chunk_idx, chunk in enumerate(text_chunks):
+            # Generate embedding using Sentence Transformers
             embedding = model.encode(chunk).tolist()
             
             collection.add(
@@ -58,15 +83,10 @@ def create_embeddings(stories, db_path='./chroma_db'):
     
     print(f"Embedded {len(stories)} stories in ChromaDB")
 
-def main():
-    # Specify the directory containing story files
-    stories_directory = './stories'
-    
-    # Get stories
-    stories = get_stories(stories_directory)
-    
-    # Create embeddings
-    create_embeddings(stories)
 
-if __name__ == "__main__":
+def main():
+    stories = load_stories('./data')
+    compute_embeddings(stories)
+
+if __name__ == '__main__':
     main()
