@@ -11,7 +11,6 @@ This project aims to extract structured details about characters from stories in
 - **Langchain** - used for documents loader, llm integration
 - **Langsmith** - Monitoring and visualizing LLM calls, tokens, and other LLM parameters
 - **git** - for version control system
-- **pylint** - for ensuring code quality
 - **Streamlit** - For user interface creation "IN PROGRESS"
   
 ## 🛠️ Installation 
@@ -51,14 +50,14 @@ This project aims to extract structured details about characters from stories in
 Run the following command to compute embeddings for all story files and persist the data into the vector database:
 
 ```bash
-python compute_embeddings.py compute-embeddings --data-dir data/
+python compute_embeddings.py 
 ```
 
 2. **🕵️ Get Character Information :**
 Run the following command to retrieve structured details about a character:
 
 ```bash
-python get_character_info.py get-character-info --character-name "Jon Snow"
+python get_character_info.py 
 ```
 
 ---
@@ -83,7 +82,12 @@ Locate the project(s) that you have integrated with LangSmith. You can identify 
 4. **visualize**: In the "Monitoring" section, you should see a visualization of the LLM call flows within that project.
 The visualization will display the sequence of LLM calls, their relationships, and any dependencies between them.
 
-[View LLM calls Tracing](https://smith.langchain.com/o/f602a986-7b0f-5e2b-aa00-74708f7af432/projects/p/93d14499-78a2-4f86-af16-5f0692deda87?timeModel=%7B%22duration%22%3A%227d%22%7D)
+
+
+![image](https://github.com/user-attachments/assets/9aa59e03-196e-4abf-b57c-0d08e237fe43)
+
+
+
 
 ## 📧 Contact 
 For any questions or suggestions, feel free to reach out:
