@@ -7,7 +7,7 @@ This project aims to extract structured details about characters from stories in
 
 ## 🤖 Tech Stack used:
 - **python**
-- **Groq** - A specialized AI accelerator designed for large language models, offering high performance and efficiency. used "mixtral-8x7b-32768" LLM model through groq.
+- **Groq** - A specialized AI accelerator designed for large language models, offering high performance and efficiency. used "llama3" LLM model through groq.
 - **Langchain** - used for documents loader, llm integration
 - **Langsmith** - Monitoring and visualizing LLM calls, tokens, and other LLM parameters
 - **git** - for version control system
@@ -47,17 +47,17 @@ This project aims to extract structured details about characters from stories in
 ## 🚀 Usage
 
 1. **🔍 Compute Embeddings :**
-Run the following command to compute embeddings for all story files and persist the data into the vector database:
+Run the following file to compute embeddings  for all story files and persist the data into the vector database:
 
 ```bash
 python compute_embeddings.py 
 ```
-![image](https://github.com/user-attachments/assets/41f69f58-414a-40aa-863b-d8bbbe56a320)
 
-![image](https://github.com/user-attachments/assets/4f57491e-d25a-4733-8f7b-69268ace74b7)
+![image](https://github.com/user-attachments/assets/651454fe-4af4-4ca4-9c8a-86b26a719d47)
+
 
 2. **🕵️ Get Character Information :**
-Run the following command to retrieve structured details about a character:
+Run the following file and provide character as a input to retrieve structured details about a character:
 
 ```bash
 python get_character_info.py 
@@ -65,14 +65,6 @@ python get_character_info.py
 ![image](https://github.com/user-attachments/assets/810830d2-732a-4fd8-901b-22d430b63128)
 
 ---
-
-## 🔬 Methodology
-
-
-
-
-
-## 🌊 Workflow flowchart
 
 
 ## 👀 Monitoring LLM calls with LangSmith
