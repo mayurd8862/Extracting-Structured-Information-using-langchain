@@ -53,12 +53,17 @@ Run the following command to compute embeddings for all story files and persist 
 python compute_embeddings.py 
 ```
 
+![image](https://github.com/user-attachments/assets/215774a4-aa9d-495b-9bd8-0dddd34225eb)
+
+![image](https://github.com/user-attachments/assets/685aa25d-3ec5-44ae-b359-1ced30d898b4)
+
 2. **🕵️ Get Character Information :**
 Run the following command to retrieve structured details about a character:
 
 ```bash
 python get_character_info.py 
 ```
+![image](https://github.com/user-attachments/assets/810830d2-732a-4fd8-901b-22d430b63128)
 
 ---
 
