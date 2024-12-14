@@ -54,8 +54,8 @@ python compute_embeddings.py
 ```
 
 ![image](https://github.com/user-attachments/assets/215774a4-aa9d-495b-9bd8-0dddd34225eb)
+![image](https://github.com/user-attachments/assets/41f69f58-414a-40aa-863b-d8bbbe56a320)
 
-![image](https://github.com/user-attachments/assets/685aa25d-3ec5-44ae-b359-1ced30d898b4)
 
 2. **🕵️ Get Character Information :**
 Run the following command to retrieve structured details about a character:
