@@ -4,9 +4,7 @@ from typing import List, Dict, Any
 import chromadb
 from sentence_transformers import SentenceTransformer
 from chromadb.config import Settings
-from compute_embeddings import load_stories
 from json_utils import load_from_json,save_to_json
-from groq import Groq
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -15,6 +13,12 @@ from langchain_groq import ChatGroq
 
 # Load environment variables
 load_dotenv()
+
+LANGCHAIN_API_KEY = os.environ.get("LANGCHAIN_API_KEY")
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = LANGCHAIN_API_KEY
+os.environ["LANGCHAIN_PROJECT"] = "deepstack_assignment"
 
 def extract_relevant_chunks(character_name: str, 
                             persist_directory: str = './chroma_db', 
@@ -159,6 +163,7 @@ def extract_character_info(story_text: str, character_name: str) -> dict:
 
 def main():
     # Load stories
+
     # stories = load_stories("./data")
     json_filepath = "./stories.json"
     stories = load_from_json(json_filepath)
