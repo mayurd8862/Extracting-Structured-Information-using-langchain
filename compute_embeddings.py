@@ -3,6 +3,7 @@ import chromadb
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from chromadb.config import Settings
+from json_utils import save_to_json
 from typing import List, Dict, Any
 from sentence_transformers import SentenceTransformer
 
@@ -10,6 +11,7 @@ def load_stories(directory):
     """
     function to read stories from text files.
     """
+    json_filepath = "./stories.json"
     stories = []
     for filename in os.listdir(directory):
         if filename.endswith('.txt'):
@@ -27,6 +29,8 @@ def load_stories(directory):
                 'title': story_title,
                 'content': full_text
             })
+
+            save_to_json(stories,json_filepath)
     
     return stories
 

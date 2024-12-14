@@ -1,0 +1,20 @@
+{
+    "name": "Eliza",
+    "storyTitle": "The Lantern Keepers",
+    "summary": "Eliza, a young artist, becomes the keeper of the Lantern after Callum's passing. She learns the stories of those the light has guided and takes on the responsibility of tending the light. Over time, she becomes a part of the town's fabric, and the light continues to guide those who are lost.",
+    "relations": [
+        {
+            "name": "Callum",
+            "relation": "Predecessor"
+        },
+        {
+            "name": "Ollie",
+            "relation": "Friend"
+        },
+        {
+            "name": "Tilly",
+            "relation": "Rescued Person"
+        }
+    ],
+    "characterType": "Protagonist"
+}
