@@ -1,0 +1,20 @@
+{
+    "name": "Eliza",
+    "storyTitle": "The Lantern Keepers",
+    "summary": "Eliza is a young artist who becomes the keeper of the lighthouse in Bramblewick, guiding those who are lost and learning the secrets of the light.",
+    "relations": [
+        {
+            "name": "Callum",
+            "relation": "Teacher/Mentor"
+        },
+        {
+            "name": "Ollie",
+            "relation": "Friend"
+        },
+        {
+            "name": "Tilly",
+            "relation": "Girl saved by Eliza"
+        }
+    ],
+    "characterType": "Protagonist"
+}
