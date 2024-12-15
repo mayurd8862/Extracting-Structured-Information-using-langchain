@@ -64,6 +64,26 @@ python get_character_info.py
 ```
 ![image](https://github.com/user-attachments/assets/810830d2-732a-4fd8-901b-22d430b63128)
 
+
+## ✅ Output Result
+
+To get character information, run the following command:
+```bash
+python get_character_info.py 
+```
+
+After running the above command, you will be prompted to enter the character name:
+```bash
+Enter the character you want to search: eliza
+```
+
+Upon entering the character name, the script will save the character's information as a JSON file in the current directory.
+
+![image](https://github.com/user-attachments/assets/6687eaeb-b6dd-4fc5-8205-9e3ffc421322)
+
+
+
+
 ---
 
 
@@ -81,8 +101,6 @@ The visualization will display the sequence of LLM calls, their relationships, a
 
 
 ![image](https://github.com/user-attachments/assets/9aa59e03-196e-4abf-b57c-0d08e237fe43)
-
-
 
 
 ## 📧 Contact 
