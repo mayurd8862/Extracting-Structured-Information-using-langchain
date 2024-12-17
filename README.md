@@ -1,14 +1,14 @@
 # Extracting Structured Information using Langchain
 
 ## 🎯  Objective
-This project aims to extract structured details about characters from stories in a provided dataset and output the required details in JSON format. The script leverages embeddings for information retrieval and processing using MistralAI with LangChain. The goal is to transform unstructured narrative data into a structured format using embeddings and processing techniques. 
+This project aims to extract structured details about characters from stories in a provided dataset and output the required details in JSON format. The script leverages embeddings for information retrieval and processing using llama model with Groq and LangChain. The goal is to transform unstructured narrative data into a structured format using embeddings and processing techniques. 
 
 ---
 
 ## 🤖 Tech Stack used:
 - **python**
 - **Groq** - A specialized AI accelerator designed for large language models, offering high performance and efficiency. used "llama3" LLM model through groq.
-- **Langchain** - used for documents loader, llm integration
+- **Langchain** - used for documents loader, JSON output parsing, llm integration
 - **Langsmith** - Monitoring and visualizing LLM calls, tokens, and other LLM parameters
 - **git** - for version control system
 - **Streamlit** - For user interface creation "IN PROGRESS"
